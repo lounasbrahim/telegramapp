@@ -1,0 +1,179 @@
+<!--
+=========================================================
+* Argon Dashboard - v1.2.0
+=========================================================
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+
+* Copyright  Creative Tim (http://www.creative-tim.com)
+* Coded by www.creative-tim.com
+=========================================================
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>Argon Dashboard - Free Dashboard for Bootstrap 4</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/img/brand/favicon.png" type="image/png">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <!-- Icons -->
+    <link rel="stylesheet" href="../assets/vendor/nucleo/css/nucleo.css" type="text/css">
+    <link rel="stylesheet" href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
+    <!-- Argon CSS -->
+    <link rel="stylesheet" href="../assets/css/argon.css?v=1.2.0" type="text/css">
+    <style type="text/css">
+        .has-error input,
+        .has-error textarea {
+            border: red solid 1px;
+            margin-bottom: 0px
+        }
+    
+        .has-error input:focus,
+        .has-error textarea:focus {
+            border: red solid 1px;
+        }
+    
+        .has-error {
+            color: red;
+        }
+    </style>
+    
+</head>
+
+<body class="bg-default">
+    
+    <!-- Main content -->
+    {{{body}}}
+    <!-- Argon Scripts -->
+    <!-- Core -->
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
+    <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+    <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+    <!-- Argon JS -->
+    <script src="../assets/js/argon.js?v=1.2.0"></script>
+    {{#if signUpPage}}
+    <script type="text/javascript">
+        $('#signUpForm input').on('keypress', function () {
+            $(this).parent().removeClass('has-error');
+            $('.help-txt').remove();
+        });
+
+        $('#btnSubmit').on('click', function () {
+            var is_valid = true;
+            var inpName = $('#name');
+            var inpEmail = $('#email');
+            var inpPwd = $('#password');
+            var inpCnfPwd = $('#confirm_password');
+            var chkagree = $('#agree:checkbox:checked');
+            $('#signUpForm input').removeClass('has-error');
+            $('.help-txt').remove();
+
+            if (inpName.val() == '') {
+                inpName.parent().addClass('has-error');
+                inpName.focus();
+                inpName.parent().append('<span class="help-txt">Name is required</span>');
+                is_valid = false;
+            }
+            if (inpEmail.val() == '') {
+                inpEmail.parent().addClass('has-error');
+                inpEmail.focus();
+                inpEmail.parent().append('<span class="help-txt">Email is required</span>');
+                is_valid = false;
+            } else if (isEmail(inpEmail.val()) == false) {
+                inpEmail.parent().addClass('has-error');
+                inpEmail.focus();
+                inpEmail.parent().append('<span class="help-txt"> Please enter a valid email</span>');
+                is_valid = false;
+            }
+            if (inpPwd.val() == '') {
+                inpPwd.parent().addClass('has-error');
+                inpPwd.focus();
+                inpPwd.parent().append('<span class="help-txt">Password is required</span>');
+                is_valid = false;
+            } else if (inpPwd.val().length < 6) {
+                inpPwd.parent().addClass('has-error');
+                inpPwd.focus();
+                inpPwd.parent().append('<span class="help-txt">Password should be atleast 6 charachters</span>');
+                is_valid = false;
+            }
+            if (inpCnfPwd.val() == '') {
+                inpCnfPwd.parent().addClass('has-error');
+                inpCnfPwd.focus();
+                inpCnfPwd.parent().append('<span class="help-txt">Please confirm your password</span>');
+                is_valid = false;
+            } else if (inpPwd.val() != inpCnfPwd.val()) {
+                inpCnfPwd.parent().addClass('has-error');
+                inpCnfPwd.focus();
+                inpCnfPwd.parent().append('<span class="help-txt">Password do not match</span>');
+                is_valid = false;
+            } else if (chkagree.length == 0) {
+                $('#agree').parent().parent().addClass('has-error');
+                $('#agree').focus();
+                $('#errorAgree').show();
+                is_valid = false;
+            }
+            if (is_valid) {
+                var form = $('#signUpForm');
+                var url = form.attr('action');
+                $(this).html('Please wait...');
+                $(this).attr('disabled', 'disabled');
+                form.submit();
+            } else {
+                return false;
+            }
+        });
+    </script>
+    {{/if}}
+    {{#if loginPage}}
+    <script type="text/javascript">
+        $('#loginForm input').on('keypress', function () {
+            $(this).parent().removeClass('has-error');
+            $('.help-txt').remove();
+        });
+
+        $('#btnLoginSubmit').on('click', function () {
+            var is_valid = true;
+            var inpEmail = $('#inputEmail');
+            var inpPwd = $('#inputPassword');
+            $('#loginForm input').removeClass('has-error');
+            $('.help-txt').remove();
+            if (inpEmail.val() == '') {
+                inpEmail.parent().addClass('has-error');
+                inpEmail.focus();
+                inpEmail.parent().append('<span class="help-txt">Email is required</span>');
+                is_valid = false;
+            } else if (isEmail(inpEmail.val()) == false) {
+                inpEmail.parent().addClass('has-error');
+                inpEmail.focus();
+                inpEmail.parent().append('<span class="help-txt"> Please enter a valid email</span>');
+                is_valid = false;
+            }
+            if (inpPwd.val() == '') {
+                inpPwd.parent().addClass('has-error');
+                inpPwd.focus();
+                inpPwd.parent().append('<span class="help-txt">Password is required</span>');
+                is_valid = false;
+            }
+            if (is_valid) {
+                var form = $('#loginForm');
+                var url = form.attr('action');
+                $(this).html('Please wait...');
+                $(this).attr('disabled', 'disabled');
+                form.submit();
+            } else {
+                return false;
+            }
+        });
+    </script>
+    {{/if}}
+</body>
+
+</html>
