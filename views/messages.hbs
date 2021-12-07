@@ -199,11 +199,6 @@
                     username: usernames[i],
                     message: message,
                 })
-                request_post.done(function (res) { console.log("message envoyé: "res) })
-                request_post.fail(function (xhr, status, error) {
-                      console.log("message non envoyé: ", error)
-                });
-            //await new Promise((resolve) => setTimeout(resolve, 3000));
             }
         }
     }
