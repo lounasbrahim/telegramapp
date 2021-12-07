@@ -185,6 +185,20 @@ async function getCryptoId(symbol_crypto) {
   let crypto_id = crypto[0].id;
   return crypto_id;
 }
+async function getCurrrentPrice(cryptoId, date) {
+  let jour = date.getDate();
+  let mois = date.getMonth();
+  let annee = date.getFullYear();
+  let date_api = `${jour}-${mois}-${annee}`;
+  try {
+    let crypto_currentprice_response = await axios.get(
+      `https://api.coingecko.com/api/v3/coins/${cryptoId}/history?date=${date_api}`
+    );
+    return crypto_currentprice_response.data.market_data.current_price.usd;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 exports.scrapMessagePage = async (req, res, next) => {
   res.render("scrap_messages", {
@@ -207,9 +221,13 @@ exports.scrapMessages = async (req, res, next) => {
   console.log("pinned_checkbox: ", pinned_checkbox);
 
   let crypto_id = await getCryptoId(symbol_crypto);
+  let cours = await getCurrrentPrice(crypto_id, date_debut);
+  console.log(cours);
+  console.log(date_debut.getFullYear());
 
   console.log("symbol_crypto: ", symbol_crypto);
   console.log("crypto_id: ", crypto_id);
+  console.log("cours: ", cours);
 
   console.log("scrapper les messages du groupe: ", chat_title);
 
@@ -269,6 +287,7 @@ exports.scrapMessages = async (req, res, next) => {
       pinned: el.isPinned.toString(),
       forwarded: el.forwardInfo == undefined ? "false" : "true",
       date: date,
+      cours: cours,
     };
   });
 
@@ -301,6 +320,7 @@ exports.scrapMessages = async (req, res, next) => {
     messages: final_results,
     date: date_debut,
     link: link,
+    cours: cours,
   });
 };
 

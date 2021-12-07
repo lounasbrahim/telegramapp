@@ -160,7 +160,10 @@
                             <img id="loader-svg" src="/assets/img/loader.svg" width="40" height="20" style="display:none">
                                     <span class="text-scrap">Scrapper</span>
                             </button>
+                                                 
                             </a>
+                                                        
+
                             </div>
                     </form>
                    
@@ -240,6 +243,11 @@
                    let button_csv_html = `<a class="btn btn-primary telecharger_csv" style="color:white" href="${data.link}">Telecharger en csv</a>`
                    
                    top_header.innerHTML += button_csv_html
+
+                   let cours_html = `<div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
+                                       <span style="color:white; font-weight:400">Cours : ${data.cours} </span></div>
+                                   `
+                   card_body.innerHTML += cours_html
 
                     // afficher les message
                     let html_map = data.messages.map(el => {
