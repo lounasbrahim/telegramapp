@@ -316,7 +316,7 @@ exports.scrapMessages = async (req, res, next) => {
   let file = path_arr.pop();
   let link = `/files-csv/${file}`;
 
-  res.send(200, {
+  res.status(200).send({
     messages: final_results,
     date: date_debut,
     link: link,
