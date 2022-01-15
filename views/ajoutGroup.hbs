@@ -1,0 +1,274 @@
+
+<div class="main-content" id="panel">
+    <input type="hidden" id="_csrf" name="_csrf" value='{{csrfToken}}'>
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary
+        border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center ml-md-auto">
+
+
+                </ul>
+                <ul class="navbar-nav align-items-center ml-auto ml-md-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link pr-0" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <div class="media align-items-center">
+                                <span class="avatar avatar-sm rounded-circle">
+                                    <img alt="Image placeholder"
+                                        src="../assets/img/theme/team-4.jpg">
+                                </span>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm font-weight-bold"></span>Admin</span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-calendar-grid-58"></i>
+                            <span>Activity</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-support-16"></i>
+                            <span>Support</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-user-run"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Créer un Groupe</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block
+                        ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item active"
+                                aria-current="page">Créer un Groupe</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row mt--5">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-upgrade">
+                <div id="top-header" class="card-header text-center border-bottom-0 pb-0 d-flex justify-content-between">
+                    <h4 class="card-title">Ajout Groupe</h4>
+                </div>
+                <div class="card-body pt-3">
+                    <form id="userForm" role="form" style="display: iherit;">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label class="form-control-label pl-0"
+                                    for="username-group">Username ( celui-çi devrait étre unique et sans espaces )</label>
+                                <input id="username-group" class="form-control"
+                                    placeholder="Username" type="text" value=""
+                                    required>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label class="form-control-label"
+                                    for="nom-group">Nom du Groupe</label>
+                                <input id="nom-group" class="form-control"
+                                    placeholder="Nom" type="text" value=""
+                                    required>
+                            </div>
+                            <div class="form-group col-6">
+                                <label class="form-control-label pl-0"
+                                    for="adresse-group">Adresse</label>
+                                <input id="adresse-group" class="form-control"
+                                    placeholder="Adresse" type="text" value=""
+                                    required>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label class="form-control-label pl-0"
+                                    for="latitude-group">Latitude</label>
+                               <input id="latitude-group" class="form-control"
+                                    placeholder="Latitude" type="text" value=""
+                                    required>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <label class="form-control-label pl-0"
+                                    for="longitude-group">Longitude</label>
+                                <input id="longitude-group" class="form-control"
+                                    placeholder="Longitude" type="text" value=""
+                                    required>
+                            </div>
+
+                            <div class="form-group col-12">
+                                <label class="form-control-label pl-0"
+                                    for="a-propos-group">A Propos</label>
+                                <textarea maxlength="255" rows="4" id="a-propos-group" class="form-control
+                                    mr-2" placeholder="A propos"
+                                    value="" required></textarea>
+                            </div>
+                            
+
+                        </div>
+                    
+                        <div class="text-center">
+                            <a id="btnSubmit"
+                                    onclick="createGroup()" class="btn
+                                    btn-primary my-4" style="color:white">
+                            <img id="loader-svg" src="/assets/img/loader.svg"  width="40" height="20" style="display:none">
+                                    <span class="text-scrap">Créer</span>
+                            </button>
+                                                 
+                            </a>
+                                                        
+
+                            </div>
+                    </form>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6">
+                    <div class="copyright text-center text-lg-left text-muted">
+                        &copy; 2020 <a href="https://www.taneflit.com"
+                            class="font-weight-bold ml-1"
+                            target="_blank">Taneflit</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="/js/axios.js"></script>
+<script>
+    async function getInputs(){
+        let username_group = document.querySelector("#username-group").value
+        let name = document.querySelector("#nom-group").value
+        let a_propos= document.querySelector("#a-propos-group").value
+        let latitude_group = document.querySelector("#latitude-group").value
+        let longitude_group = document.querySelector("#longitude-group").value
+        let adresse_group = document.querySelector("#adresse-group").value
+        let csrf = document.querySelector('#_csrf').value
+        return {
+            username_group, 
+            name,
+            a_propos,
+            latitude_group,
+            longitude_group,
+            adresse_group,
+            csrf
+        }
+    }
+
+    async function createGroupRequest(inputs){
+        try{
+            const headers = {
+                'Content-Type': 'application/json',
+            }
+            let data = {
+                name: inputs.name ,
+                username: inputs.username_group,
+                a_propos: inputs.a_propos,
+                latitude: inputs.latitude_group,
+                longitude: inputs.longitude_group,
+                adresse: inputs.adresse_group
+            }
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = inputs.csrf;
+            let response = await axios.post('/create_groupe', data, {
+                headers : headers
+            })
+            await sweetAlertPopOut(response.data.status, response.data.message)
+            return response.data
+        }catch(err){
+            console.log(err)
+            await sweetAlertPopOut(err.response.data.status, err.response.data.message )
+            return err.response.data
+        }
+    }
+
+    async function checkGroupeUsernameRequest(inputs){
+        const headers = {
+            'Content-Type': 'application/json',
+        }
+        const data = {
+            username: inputs.username_group,
+        }
+        try{
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = inputs.csrf;
+            let response = await axios.post('/check_username', data, {
+                headers : headers
+            })
+            console.log("response.data.status", response.data.status)
+            console.log("response.data.message", response.data.message)
+            await sweetAlertPopOut(response.data.status, response.data.message)
+            return response.data
+        }catch(err){
+            console.log("erreur : ", err.response)
+            console.log("status: ", err.response.data.status)
+            await sweetAlertPopOut(err.response.data.status, err.response.data.message )
+            return err.response.data
+        }
+    }
+    
+    async function createGroup(){
+        let loader_svg = document.querySelector("#loader-svg")
+        let btnSubmit = document.querySelector("#btnSubmit")
+        let inputs = await getInputs()
+
+        if (inputs.name.trim().length === 0 || inputs.a_propos.length === 0) 
+            return await sweetAlertPopOut("error", "Veuillez compléter les champs" )
+
+        loader_svg.style.display = "inherit"
+        btnSubmit.setAttribute("disabled", "disabled")
+        btnSubmit.querySelector(".text-scrap").innerHTML = "Veuilliez patienter ..."
+
+        let response_checkUsername = await checkGroupeUsernameRequest(inputs) 
+        console.log("response_checkUsername: ", response_checkUsername)
+        console.log("status: ", response_checkUsername.status)
+        if (response_checkUsername.status === "success"){ 
+            await createGroupRequest(inputs) 
+        }
+
+        loader_svg.style.display = "none"
+        btnSubmit.removeAttribute("disabled")
+        btnSubmit.querySelector(".text-scrap").innerHTML = "Créer"
+    }
+    
+    
+</script>
+

@@ -1,37 +1,43 @@
 {
-    "name": "telegram-app",
-    "version": "1.0.0",
-    "description": "Web app for telegram",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon --inspect index.js ",
-        "postinstall": "cp .env-example .env"
-    },
-    "author": "Taneflit",
-    "license": "MIT",
-    "devDependencies": {
-        "nodemon": "^2.0.4"
-    },
-    "dependencies": {
-        "@airgram/web": "^4.1.0",
-        "airgram": "^4.2.0",
-        "axios": "^0.24.0",
-        "bcryptjs": "^2.4.3",
-        "body-parser": "^1.19.0",
-        "connect-session-sequelize": "^7.0.1",
-        "csurf": "^1.11.0",
-        "csv-stringify": "^6.0.4",
-        "csv-writer": "^1.6.0",
-        "debug": "^4.3.2",
-        "dotenv": "^8.2.0",
-        "express": "^4.17.1",
-        "express-flash": "0.0.2",
-        "express-handlebars": "^5.1.0",
-        "express-session": "^1.17.1",
-        "mysql2": "^2.1.0",
-        "sequelize": "^6.3.4",
-        "typescript": "^4.5.2",
-        "validator": "^13.1.1"
-    }
+  "name": "telegram-app",
+  "version": "1.0.0",
+  "description": "Web app for telegram",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --inspect index.js ",
+    "postinstall": "cp .env-example .env"
+  },
+  "author": "Taneflit",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "@airgram/web": "^4.1.0",
+    "airgram": "^4.2.0",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-session-sequelize": "^7.0.1",
+    "csurf": "^1.11.0",
+    "csv-stringify": "^6.0.4",
+    "csv-writer": "^1.6.0",
+    "csvtojson": "^2.0.10",
+    "debug": "^4.3.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "input": "^1.0.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^6.13.0",
+    "sequelize-cli": "^6.4.0",
+    "telegram": "^2.0.12",
+    "telegram-mtproto": "^2.2.2",
+    "typescript": "^4.5.2",
+    "validator": "^13.1.1"
+  }
 }

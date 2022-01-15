@@ -1,0 +1,61 @@
+[
+  {
+    "_": "message",
+    "id": 2039021043712,
+    "sender": { "_": "messageSenderUser", "userId": 1889349750 },
+    "chatId": -1001165784912,
+    "isOutgoing": false,
+    "isPinned": true,
+    "canBeEdited": false,
+    "canBeForwarded": true,
+    "canBeDeletedOnlyForSelf": false,
+    "canBeDeletedForAllUsers": false,
+    "canGetStatistics": false,
+    "canGetMessageThread": true,
+    "canGetViewers": false,
+    "canGetMediaTimestampLinks": true,
+    "hasTimestampedMedia": true,
+    "isChannelPost": false,
+    "containsUnreadMention": false,
+    "date": 1636104367,
+    "editDate": 0,
+    "forwardInfo": {
+      "_": "messageForwardInfo",
+      "origin": { "_": "messageForwardOriginUser", "senderUserId": 1889349750 },
+      "date": 1636104024,
+      "publicServiceAnnouncementType": "",
+      "fromChatId": 0,
+      "fromMessageId": 0
+    },
+    "interactionInfo": {
+      "_": "messageInteractionInfo",
+      "viewCount": 0,
+      "forwardCount": 0,
+      "replyInfo": {
+        "_": "messageReplyInfo",
+        "replyCount": 0,
+        "recentRepliers": [],
+        "lastReadInboxMessageId": 0,
+        "lastReadOutboxMessageId": 0,
+        "lastMessageId": 0
+      }
+    },
+    "replyInChatId": 0,
+    "replyToMessageId": 0,
+    "messageThreadId": 2039021043712,
+    "ttl": 0,
+    "ttlExpiresIn": 0,
+    "viaBotUserId": 0,
+    "authorSignature": "",
+    "mediaAlbumId": "0",
+    "restrictionReason": "",
+    "content": {
+      "_": "messageText",
+      "text": {
+        "_": "formattedText",
+        "text": "🚨SAITAMA WORLDWIDE🚨 \n\nIs the new Official Main Chat for the Saitama community.\n\nRefined, Updated and Organized.\n\nThe old 'Official Main Chat' is subject to bot spammers and scammers.\n\nLeave the old chat behind and join \nSAITAMA WORLDWIDE 🌐",
+        "entities": []
+      }
+    }
+  }
+]

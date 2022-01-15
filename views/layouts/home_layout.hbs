@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram App</title>
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
-    <!-- Icons -->
-    <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css" type="text/css">
-    <link rel="stylesheet" href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" type="text/css">
-    <!-- Page plugins -->
-    <!-- Argon CSS -->
-    <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0" type="text/css">
-<style>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Telegram App</title>
+        <!-- Fonts -->
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+        <!-- Icons -->
+        <link rel="stylesheet" href="/assets/vendor/nucleo/css/nucleo.css"
+            type="text/css">
+        <link rel="stylesheet"
+            href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+            type="text/css">
+        <!-- Page plugins -->
+        <!-- Argon CSS -->
+        <link rel="stylesheet" href="/assets/css/argon.css?v=1.2.0"
+            type="text/css">
+
+        <style>
     /* The switch - the box around the slider */
     .switch {
         position: relative;
@@ -77,70 +83,119 @@
         border-radius: 50%;
     }
 </style>
-</head>
-<body>
-    <!-- Sidenav -->
-    <nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
-        <div class="scrollbar-inner">
-            <!-- Brand -->
-            <div class="sidenav-header  align-items-center">
-                <a class="navbar-brand" href="javascript:void(0)">
-                    <img src="assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
-                </a>
-            </div>
-            <div class="navbar-inner">
-                <!-- Collapse -->
-                <div class="collapse navbar-collapse" id="sidenav-collapse-main">
-                    <!-- Nav items -->
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/">
-                                <i class="ni ni-tv-2 text-primary"></i>
-                                <span class="nav-link-text">Dashboard</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/messages">
-                                <i class="ni ni-send text-orange"></i>
-                                <span class="nav-link-text">Envoie de messages</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/members">
-                                <i class="ni ni-cloud-upload-96 text-green"></i>
-                                <span class="nav-link-text">Import Memebers</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/scrap_messages">
-                                <i class="ni ni-chat-round text-pink"></i>
-                                <span class="nav-link-text">Scrap de Messages</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/user">
-                                <i class="ni ni-circle-08"></i>
-                                <span class="nav-link-text">Utilisateur</span>
-                            </a>
-                        </li>
-                    </ul>              
-            </div>
-        </div>
-    </nav>
-    {{{body}}}
-    
-    <!-- Main content -->
+    </head>
+    <body>
+        <!-- Sidenav -->
+        <nav class="sidenav navbar navbar-vertical fixed-left navbar-expand-xs
+            navbar-light bg-white" id="sidenav-main">
+            <div class="scrollbar-inner">
+                <!-- Brand -->
+                <div class="sidenav-header align-items-center">
+                    <a class="navbar-brand" href="javascript:void(0)">
+                        <img src="assets/img/brand/blue.png"
+                            class="navbar-brand-img" alt="...">
+                    </a>
+                </div>
+                <div class="navbar-inner">
+                    <!-- Collapse -->
+                    <div class="collapse navbar-collapse"
+                        id="sidenav-collapse-main">
+                        <!-- Nav items -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/">
+                                    <i class="ni ni-tv-2 text-primary"></i>
+                                    <span class="nav-link-text">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/messages">
+                                    <i class="ni ni-send text-orange"></i>
+                                    <span class="nav-link-text">Envoie de
+                                        Messages</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/members">
+                                    <i class="ni ni-cloud-upload-96 text-green"></i>
+                                    <span class="nav-link-text">Import de
+                                        Membres</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/scrap_messages">
+                                    <i class="ni ni-chat-round text-pink"></i>
+                                    <span class="nav-link-text">Scrap de
+                                        Messages</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/scrap_members">
+                                    <i class="ni ni-single-02 text-info"></i>
+                                    <span class="nav-link-text">Scrap de Membres</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/create_groupe">
+                                    <i class="ni ni-app" style="color: #6b50ff"></i>
+                                    <span class="nav-link-text">Créer un
+                                        Groupe</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/ajout_members">
+                                    <i class="ni ni-fat-add" style="color:
+                                        #ff50d9"></i>
+                                    <span class="nav-link-text">Ajout memberes</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user">
+                                    <i class="ni ni-circle-08"></i>
+                                    <span class="nav-link-text">Utilisateur</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            {{{body}}}
 
-    <!-- Argon Scripts -->
-    <script src="/assets/vendor/jquery/dist/jquery.min.js"></scrip>
+            <!-- Main content -->
+
+            <!-- Argon Scripts -->
+            <script src="/assets/vendor/jquery/dist/jquery.min.js"></scrip>
     <script src="/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
-    <script src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-    <script src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-    <!-- Optional JS -->
-    <script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
-    <!-- Argon JS -->
-    <script src="/assets/js/argon.js?v=1.2.0"></script>
-</body>
-</html>
+            <script src="/assets/vendor/js-cookie/js.cookie.js"></script>
+            <script
+                src="/assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
+            <script
+                src="/assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+            <!-- Optional JS -->
+            <script src="/assets/vendor/chart.js/dist/Chart.min.js"></script>
+            <script src="/assets/vendor/chart.js/dist/Chart.extension.js"></script>
+            <!-- Argon JS -->
+            <script src="/assets/js/argon.js?v=1.2.0"></script>
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+            <script>
+                async function sweetAlertPopOut(status, message){
+                    let icon = status  == "success" ? "success" : "error";
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                    })
+                    Toast.fire({
+                        icon: icon, // error , warninig
+                        title: message
+                    })
+                }
+            </script>
+        </body>
+    </html>

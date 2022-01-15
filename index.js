@@ -2,11 +2,13 @@ const path = require("path");
 const env = require("dotenv");
 const csrf = require("csurf");
 const express = require("express");
+const fileUpload = require("express-fileupload");
 const flash = require("express-flash");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const expressHbs = require("express-handlebars");
 const SequelizeStore = require("connect-session-sequelize")(session.Store); // initalize sequelize with session store
+const Group = require("./app/models/Group");
 
 const app = express();
 const csrfProtection = csrf();
@@ -17,7 +19,9 @@ const sequelize = require("./config/database");
 const errorController = require("./app/controllers/ErrorController");
 
 env.config();
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(

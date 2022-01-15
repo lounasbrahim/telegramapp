@@ -1,4 +1,3 @@
-
 <div class="main-content" id="panel">
     <input type="hidden" id="_csrf" name="_csrf" value='{{csrfToken}}'>
     <!-- Topnav -->
@@ -155,7 +154,7 @@
                         </div>
                         <div class="text-center">
                             <a id="btnSubmit"
-                                    onclick="scrapMessage()" class="btn
+                                    onclick="scrapMessages()" class="btn
                                     btn-primary my-4" style="color:white">
                             <img id="loader-svg" src="/assets/img/loader.svg" width="40" height="20" style="display:none">
                                     <span class="text-scrap">Scrapper</span>
@@ -166,7 +165,6 @@
 
                             </div>
                     </form>
-                   
                     </div>
                 </div>
             </div>
@@ -186,110 +184,189 @@
         </footer>
     </div>
 </div>
+<script src="/js/axios.js"></script>
 <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
 <script>
-    async function scrapMessage(){
-            let username = document.querySelector("#group-scrap").value
-            let date_debut= document.querySelector("#date-debut").value
-            let heure_debut = document.querySelector("#heure-debut").value
-            let date_fin= document.querySelector("#date-fin").value
-            let heure_fin = document.querySelector("#heure-fin").value
-            let pinned_checkbox = document.querySelector("#pinned_checkbox").checked
-            let frowarded_checkbox = document.querySelector("#frowarded_checkbox").checked
-            let csrf = document.querySelector('#_csrf').value
-            let symbol_crypto = document.querySelector("#symbol-crypto").value
-            let loader_svg = document.querySelector("#loader-svg")
-            let btnSubmit = document.querySelector("#btnSubmit")
-            let userform = document.querySelector("#userForm")
+    var csrf = document.querySelector('#_csrf').value;
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
+    let default_headers = {
+        'Content-Type' : 'application/json',
+    }
+
+    async function getInput(){
+        let username = document.querySelector("#group-scrap").value
+        let date_debut= document.querySelector("#date-debut").value
+        let heure_debut = document.querySelector("#heure-debut").value
+        let date_fin= document.querySelector("#date-fin").value
+        let heure_fin = document.querySelector("#heure-fin").value
+        let pinned_checkbox = document.querySelector("#pinned_checkbox").checked
+        let frowarded_checkbox = document.querySelector("#frowarded_checkbox").checked
+        let symbol_crypto = document.querySelector("#symbol-crypto").value
+        let loader_svg = document.querySelector("#loader-svg")
+        let btnSubmit = document.querySelector("#btnSubmit")
+        let userform = document.querySelector("#userForm")
+        return {
+            username,
+            date_debut,
+            heure_debut,
+            date_fin,
+            heure_fin,
+            pinned_checkbox,
+            frowarded_checkbox,
+            symbol_crypto,
+            loader_svg,
+            btnSubmit,
+            userform
+        }
+    }
+
+    async function getGroupRequest(username){
+        try {
+            let data = {
+                username,
+            }
+            let response = await axios.post("get_message_group", data, {
+                headers : default_headers
+            } )
+            await sweetAlertPopOut(response.data.status, response.data.message)
+            return username
+        } 
+        catch(err){
+            console.log(err)
+            await sweetAlertPopOut(err.response.data.status, err.response.data.message)
+            return false; 
+        }   
+    }
+    
+    async function scrapMessagesRequest(username,symbol_crypto,date_debut,date_fin,pinned_checkbox,frowarded_checkbox)
+    {
+        try {
+            let data = {
+                username,
+                symbol_crypto,
+                date_debut,
+                date_fin,
+                pinned_checkbox,
+                frowarded_checkbox
+            }
+            let response = await axios.post("scrap_messages", data, {
+                headers : default_headers
+            } )
+            await sweetAlertPopOut(response.data.status, response.data.message)
+            return response
+        } 
+        catch(err){
+            console.log(err)
+            await sweetAlertPopOut(err.response.data.status, err.response.data.message)
+            return false; 
+        }   
+    }
+
+    async function scrapMessages(){
+        let inputs = await getInput()
+        let {
+            username,
+            date_debut,
+            heure_debut,
+            date_fin,
+            heure_fin,
+            pinned_checkbox,
+            frowarded_checkbox,
+            symbol_crypto,
+            loader_svg,
+            btnSubmit,
+            userform
+        } = inputs
+        
+        if (heure_debut.length != 0){
+            date_debut += "T" +  heure_debut
+        }
+        if (heure_fin.length != 0){
+            date_fin += "T" +  heure_fin
+        }
+
+        if (username.trim().length != 0 && date_debut.length != 0 && date_debut.length != 0 && symbol_crypto.length != 0 ){
+            loader_svg.style.display = "inherit"
+            btnSubmit.querySelector(".text-scrap").innerHTML = "Veuilliez patienter ..."
+
+            if (document.querySelector("#messages_scrapes")){
+                document.querySelector("#messages_scrapes").remove()
+            }
+
+            if (document.querySelector(".telecharger_csv")){
+                document.querySelector(".telecharger_csv").remove();
+            }
             
-            if (heure_debut.length != 0){
-                date_debut += "T" +  heure_debut
-            }
-            if (heure_fin.length != 0){
-                date_fin += "T" +  heure_fin
-            }
+            let response_getGroupRequest = await getGroupRequest(username) 
+            if (response_getGroupRequest == false) return 
 
-            if (username.trim().length != 0 && date_debut.length != 0 && date_debut.length != 0 && symbol_crypto.length != 0 ){
-                loader_svg.style.display = "inherit"
-                btnSubmit.querySelector(".text-scrap").innerHTML = "Veuilliez patienter ..."
+            let response_scrapMessage = await scrapMessagesRequest(username,symbol_crypto,date_debut,date_fin,pinned_checkbox, frowarded_checkbox)
 
-                if (document.querySelector("#messages_scrapes")){
-                    document.querySelector("#messages_scrapes").remove()
-                }
+            let data = response_scrapMessage.data.data
 
-                if (document.querySelector(".telecharger_csv")){
-                    document.querySelector(".telecharger_csv").remove();
-                } 
+            let card_body = document.querySelector(".card-body")
+                    
+            // retiblir le button scrapper
+            loader_svg.style.display = "none"
+            btnSubmit.querySelector(".text-scrap").innerHTML = "Scrapper"
 
-                $.post('scrap_messages',
-                {
-                    _csrf: csrf,
-                    username: username,
-                    symbol_crypto: symbol_crypto,
-                    date_debut: date_debut,
-                    date_fin: date_fin, 
-                    pinned_checkbox: pinned_checkbox, 
-                    frowarded_checkbox: frowarded_checkbox 
-                }, function(data) {
-                   let card_body = document.querySelector(".card-body")
-                   
-                   // retiblir le button scrapper
-                   loader_svg.style.display = "none"
-                   btnSubmit.querySelector(".text-scrap").innerHTML = "Scrapper"
+            // ajouter le button telecharger en csv  dans le header                  
+            let top_header = document.querySelector("#top-header")
+            let button_csv_html = `<a class="btn btn-primary telecharger_csv" style="color:white" href="${data.link}">Telecharger en csv</a>`
+            
+            top_header.innerHTML += button_csv_html
 
-                   // ajouter le button telecharger en csv  dans le header                  
-                   let top_header = document.querySelector("#top-header")
-                   let button_csv_html = `<a class="btn btn-primary telecharger_csv" style="color:white" href="${data.link}">Telecharger en csv</a>`
-                   
-                   top_header.innerHTML += button_csv_html
+            let cours_html = `<div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
+                                <span style="color:white; font-weight:400">Cours : ${data.cours} </span></div>
+                            `
+            let nombres_tokens_html = `<div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
+                <span style="color:white; font-weight:400">Nombres de Tokens : ${data.nombres_tokens} </span></div>
+            `
+                let marketcap_html = `<div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
+                <span style="color:white; font-weight:400">Cours : ${data.nombres_tokens * data.cours} </span></div>
+            `
+            card_body.innerHTML += cours_html
+            card_body.innerHTML += nombres_tokens_html
 
-                   let cours_html = `<div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
-                                       <span style="color:white; font-weight:400">Cours : ${data.cours} </span></div>
-                                   `
-                   card_body.innerHTML += cours_html
+            // afficher les message
 
-                    // afficher les message
-                    let html_map = data.messages.map(el => {
-                       let html =
-                            `<div class="card-header border-0">
-                            <div class="row align-items-center">
-                                <div>
-                                    <h4 class="mb-0">${el.date}</h4>
-                                </div>
-                                
+            for (let i = 0;i < data.messages.length ;i++){
+                let lien = data.messages[i].lien.replace("https://t.me/", "")
+
+                let html_message =
+                    `<div class="message_div_${i}" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
+                            <div>
+                                <h3 style="color:white" class="card-title"><a style="color:white; font-size:18px;font-weight: 800" href="${data.messages[i].lien}"><i class="fas fa-link mr-1"></i>: ${data.messages[i].lien}</a></h3>
+                                <h3 style="color:white;"><i class="fas fa-comment-dots mr-1"></i>: ${data.messages[i].text}</h3>
+                                <h3 style="color:white; font-size:18px;font-weight: 400"><i class="fas fa-eye mr-1"></i>: </h3>
+                                <iframe id="telegram-post-${lien}" src="https://t.me/${lien}?embed=1" width="100%" height="" frameborder="0" style="overflow: hidden; border: none; min-width: 100%; height: 300px;"></iframe>
                             </div>
-                            <div class="message_container" style="  padding: 1em;background-color: #5e87e4;border-radius: 0.35em;margin-top: 20px;">
-                                    <div>
-                                    <p style="color:white;font-weight:400">${el.text}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-end">`
-                                       
-                                    if (el.pinned == "true"){
-                                    html +=`<div class="mr-2">
-                                        <i class="fas fa-thumbtack" style='color:white'></i>                                    
-                                        </div>`
-                                    }
-                                    
-                                    if (el.forwarded == "true"){
-                                    html +=`<div class="">
-                                        <i class="fas fa-share" style="color:white"></i>
-                                        </div>`
-                                    }
-                                    
-                                    html +=`</div>
-                            </div>
-                            </div>`
-
-                        return html;
-                    }) 
-
-                    html_map= html_map.join("")
-                    let html = `<div id="messages_scrapes">` + html_map + "</div>"
-                    card_body.innerHTML += html
-                   //window.location.assign(data.link)
-                });
+                            <div class="d-flex align-items-center justify-content-end">`
+                            if (data.messages[i].pinned == "true"){
+                            html_message +=`<div class="mr-2">
+                                <i class="fas fa-thumbtack" style='color:white'></i>                                    
+                                </div>`
+                            }
+                            
+                            if (data.messages[i].forwarded == "true"){
+                            html_message +=`<div class="">
+                                <i class="fas fa-share" style="color:white"></i>
+                                </div>`
+                            }
+                            
+                html_message +=`</div></div>`
+                card_body.innerHTML += html_message
+            }
             }
         }
 </script>
+<style>
+iframe {
+    overflow: hidden;
+}
+iframe:hover {
+    overflow: scroll;
+}
+</style>
 

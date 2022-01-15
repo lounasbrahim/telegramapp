@@ -1,0 +1,311 @@
+<div class="main-content" id="panel">
+    <input type="hidden" id="_csrf" name="_csrf" value='{{csrfToken}}'>
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center  ml-md-auto ">
+
+
+                </ul>
+                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <div class="media align-items-center">
+                                <span class="avatar avatar-sm rounded-circle">
+                                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                                </span>
+                                <div class="media-body  ml-2  d-none d-lg-block">
+                                    <span class="mb-0 text-sm  font-weight-bold"></span>Admin</span>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu  dropdown-menu-right ">
+                            <div class="dropdown-header noti-title">
+                                <h6 class="text-overflow m-0">Welcome!</h6>
+                            </div>
+                            <a href="#!" class="dropdown-item">
+                                <i class="ni ni-single-02"></i>
+                                <span>My profile</span>
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                                <i class="ni ni-settings-gear-65"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                                <i class="ni ni-calendar-grid-58"></i>
+                                <span>Activity</span>
+                            </a>
+                            <a href="#!" class="dropdown-item">
+                                <i class="ni ni-support-16"></i>
+                                <span>Support</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#!" class="dropdown-item">
+                                <i class="ni ni-user-run"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <!-- Header -->
+    <div class="header bg-primary pb-6">
+        <div class="container-fluid">
+            <div class="header-body">
+                <div class="row align-items-center py-4">
+                    <div class="col-lg-6 col-7">
+                        <h6 class="h2 text-white d-inline-block mb-0">Scrap de Membres</h6>
+                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Scrap Membres</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page content -->
+    <div class="container-fluid mt--6">
+        <div class="row mt--5">
+            <div class="col-md-10 ml-auto mr-auto">
+                <div class="card card-upgrade">
+                    <div id="top-header" class="card-header text-center border-bottom-0 pb-0 d-flex justify-content-between">
+                    <h4 class="card-title col-6 text-left p-0">Scrap de Membres</h4>
+                    <div id="buttons-add" class="d-flex align-content-end">
+
+                    </div>
+                    </div>
+                    <form action="">
+                    <div class="card-body  pt-2 pb-4" >
+                      <form id="userForm" role="form" style="display: iherit;">
+                        <div class="row">
+                            <div class="form-group col-12">
+                                <label class="form-control-label"
+                                    for="input-username">Username du Groupe</label>
+                                <input id="group-scrap" class="form-control"
+                                    placeholder="Username" type="text" value=""
+                                    required>
+                            </div>
+                        </div>
+                        <div class="button-container text-center" style="display: flex;align-items: center;justify-content: center;">
+                            <a id="btnSubmit"
+                                    onclick="scrapMembers()" class="btn
+                                    btn-primary my-4" style="color:white;display:flex">
+                            <img id="loader-svg" src="/assets/img/loader.svg" width="40" height="20" style="display:none">
+                                    <span class="text-scrap">Scrapper</span>
+                            </button>
+                                                 
+                            </a>
+                        </div>
+                        </form>
+               
+                    </div>
+                    
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <footer class="footer pt-0">
+            <div class="row align-items-center justify-content-lg-between">
+                <div class="col-lg-6">
+                    <div class="copyright text-center  text-lg-left  text-muted">
+                        &copy; 2020 <a href="https://www.taneflit.com" class="font-weight-bold ml-1"
+                            target="_blank">Taneflit</a>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+</div>
+    <script src="/js/axios.js"></script>
+<script>
+    const csrf = document.querySelector('#_csrf').value
+    let all_members = []; 
+    let group_username ;
+    async function importMemembers(){
+        
+        console.log("importation en cours")
+        try{
+            const headers = {
+                'Content-Type': 'application/json',
+            }
+            const data = {
+               all_members: JSON.stringify(all_members),
+               group_username: group_username
+            }
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
+            let response = await axios.post('/members', data, {
+                headers : headers
+            })
+            console.log(response.data) 
+        }catch(err){
+            console.log(err)
+        }   
+    }
+    
+    async function preLunch(){
+        btnSubmit.querySelector(".text-scrap").innerHTML = "Veuilliez patienter ..."
+
+        if (document.querySelector("#members_table_body")){
+            document.querySelector("#members_table_body").remove();
+        } 
+        
+        if (document.querySelector(".telecharger_csv")){
+            document.querySelector(".telecharger_csv").remove();
+        } 
+
+        if (document.querySelector("#importBtn")){
+            document.querySelector("#importBtn").remove()
+        }
+
+        if (document.querySelector(".members-table-title")){
+            document.querySelector(".members-table-title").remove()
+            document.querySelector(".table-responsive").remove()
+        }
+    }
+    
+    async function scrapMembers(){
+        let username = document.querySelector("#group-scrap").value
+        let button_container = document.querySelector("#buttons-add")
+        let members_table_body = document.querySelector("#members_table_body")
+        group_username = username
+        await preLunch()
+        
+        if (username.trim().length != 0 ){
+            all_members = []
+            let card_body = document.querySelector(".card-body")
+            document.querySelector("#loader-svg").style.display = "inherit"
+        
+            await addTableHTML()
+
+            all_members = await scrapMembersRequests(all_members, csrf, username)
+
+            document.querySelector("#loader-svg").style.display = "none"
+            document.querySelector(".text-scrap").innerHTML = "Scrapper"
+            
+            let response_get_csv = await getCsvData()
+            let link = response_get_csv.link
+ 
+            //ajouter le button telecharger en csv  dans le header                  
+            let top_header = document.querySelector("#top-header")
+            let button_csv_html = `<a class="btn btn-primary telecharger_csv" style="color:white" href="${link}">Telecharger en csv</a>`
+            
+            button_container.innerHTML += button_csv_html
+
+            let import_button_html = `<a id="importBtn" onclick="importMemembers()" class="btn" style="color:white;background-color:#2dce89">
+                        <img id="loader-svg" src="/assets/img/loader.svg" width="40" height="20" style="display:none">
+                        <span class="text-scrap">Importer les Membres</span>                            
+             </a>`
+            button_container.innerHTML += import_button_html
+
+        }
+    }
+
+    async function getCsvData(){
+        let response ;
+        console.log("get csv data")
+        try{
+            const headers = {
+                'Content-Type': 'application/json',
+            }
+            const data = {
+                all_members: JSON.stringify(all_members),
+                group_username: group_username
+            }
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
+            let response = await axios.post('/get_members_csv', data, {
+                headers : headers
+            })
+            return response.data
+        }catch(err){
+            console.log(err)
+        }   
+    }
+
+    async function addTableHTML(){
+        let html_div = `<div class="card-header members-table-title border-0">
+            <div class="row align-items-center">
+                <div class="">
+                    <h3 class="mb-0">Membres <span style="font-weight:400;color:#9e9ea5">(
+                    Total : <span id="total-members">0</span>
+                    )</span></h3>
+                </div>
+            </div>
+            </div>
+            <div class="table-responsive">
+                <!-- Projects table -->
+                <table id="members-table" class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">User ID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">phone</th>
+
+                    </tr>
+                </thead>
+                <tbody id="members_table_body">
+                </tbody></table></div>`
+        document.querySelector(".card-body").innerHTML += html_div
+    }
+
+    async function scrapMembersRequests(all_members, csrf, username){
+        for(let i = 1;i <  20;i++){
+            console.log('i: ',i)
+            document.querySelector("#members_table_body").innerHTML =  ""                    
+            $.post('scrap_members',
+            {
+                _csrf: csrf,
+                username: username,
+                offset: 100 * i
+            }, function(data) {
+                console.log(data.members)
+                if (data.members_length == 0){
+                    i = 1001;
+                }
+                all_members = [... data.members,  ...all_members]
+                addTotalMembersToHTML(all_members.length)
+                let html_tr = all_members.map(el => {
+                    let html = 
+                    `<tr class="member-tr">
+                        <th scope="row">
+                            ${el.id == null ? "N/A" : el.id}
+                        </th>
+                        <td class="member-username">
+                            ${el.username == null ? "N/A" : el.username}
+                        </td>
+                        <td>
+                            ${el.name == null ? "N/A" : el.name}
+                        </td>
+                        <td>
+                            ${el.phone == null ? "N/A" : el.phone}
+                        </td>
+                    </tr>` 
+                    return html
+                })
+                html_tr = html_tr.join("")
+                console.log("all_members: ",all_members.length)
+                console.log("html_tr", html_tr)
+                //``  
+                document.querySelector("#members_table_body").innerHTML =  html_tr   
+            })
+            await new Promise((resolve) => setTimeout(resolve, 3000));
+        }
+        return all_members;
+    }
+
+    function addTotalMembersToHTML(members_length){
+        let total_members = document.querySelector("#total-members")
+        total_members.innerHTML = members_length
+    }
+</script>

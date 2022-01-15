@@ -1,98 +1,106 @@
 <div class="main-content" id="panel">
     <input type="hidden" id="_csrf" name="_csrf" value='{{csrfToken}}'>
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary
+        border-bottom">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar links -->
-                <ul class="navbar-nav align-items-center  ml-md-auto ">
-
-
+                <ul class="navbar-nav align-items-center ml-md-auto">
                 </ul>
-                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                <ul class="navbar-nav align-items-center ml-auto ml-md-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="nav-link pr-0" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="media align-items-center">
                                 <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                                    <img alt="Image placeholder"
+                                        src="../assets/img/theme/team-4.jpg">
                                 </span>
-                                <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold"></span>Admin</span>
-                                </div>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm font-weight-bold"></span>Admin</span>
                             </div>
-                        </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome!</h6>
-                            </div>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span>Settings</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-support-16"></i>
-                                <span>Support</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-user-run"></i>
-                                <span>Logout</span>
-                            </a>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Header -->
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
-        <div class="container-fluid">
-            <div class="header-body">
-                <div class="row align-items-center py-4">
-                    <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Import Members</h6>
-                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Memebers</li>
-                            </ol>
-                        </nav>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-calendar-grid-58"></i>
+                            <span>Activity</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-support-16"></i>
+                            <span>Support</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-user-run"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Import Members</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block
+                        ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item active"
+                                aria-current="page">Memebers</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--6">
-        <div class="row mt--5">
-            <div class="col-md-10 ml-auto mr-auto">
-                <div class="card card-upgrade">
-                    <div class="card-header text-center border-bottom-0">
-                        <h4 class="card-title">Import CSV</h4>
-                        <p class="card-category">Veuillez uploader votre fichier csv duquel les
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row mt--5">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-upgrade">
+                <div class="card-header text-center border-bottom-0">
+                    <h4 class="card-title">Import CSV</h4>
+                    <p class="card-category">Veuillez uploader votre fichier csv
+                        duquel les
                         les membres seront importées</p>
+                </div>
+                <div class="card-body px-5 pt-0 pb-4">
+                    <div class="row" id="dragg_and_drop">
+                        <p class="sm text_template mb-3" style="color:
+                            #555"></p>
+                        <input class="w-100 btn btn-primary" type="file"
+                            accept=".csv" name="csvFile" id="csvFile">
                     </div>
-                    <form action="">
-                    <div class="card-body px-5 pt-0 pb-4" >
-                        <div class="row" id="dragg_and_drop">
-                            <p class="sm text_template mb-3" style="color: #555"></p>
-                            <input class="w-100 btn btn-primary" type="file" accept=".csv" name="csvfile" id="csvfile">
-                        </div>
-                        <div class="mt-3 d-flex justify-content-end">
-                        <button type="button" class="btn btn-success mr--3" onclick="envoiMessage()">Importer</button> 
+                    <div class="mt-3 d-flex justify-content-end">
+                        <a class="btn btn-success btn-import mr--3" style="color: white"
+                            onclick="sendFile()" value="Importer">
+                            <img id="loader-svg" src="/assets/img/loader.svg" width="40" height="20" style="display:none">
+                            Importer</a>
                         </div>
                     </div>
-                    </form>
                 </div>
             </div>
         </div>
@@ -100,8 +108,9 @@
         <footer class="footer pt-0">
             <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6">
-                    <div class="copyright text-center  text-lg-left  text-muted">
-                        &copy; 2020 <a href="https://www.taneflit.com" class="font-weight-bold ml-1"
+                    <div class="copyright text-center text-lg-left text-muted">
+                        &copy; 2020 <a href="https://www.taneflit.com"
+                            class="font-weight-bold ml-1"
                             target="_blank">Taneflit</a>
                     </div>
                 </div>
@@ -111,7 +120,9 @@
     </div>
 </div>
 <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
 <script type="text/javascript">
+    let csrf = document.querySelector('#_csrf').value
     $('#btnSubmit').on('click', function () {
         var is_valid = true;
         var numTel = $('#num-tel').val();
@@ -135,4 +146,44 @@
             return false;
         }
     });
+
+    async function sendFile(){
+        let btn_import = document.querySelector(".btn-import")
+        let loader_svg = document.querySelector("#loader-svg")
+        let response_check = await checkFileUploaded();
+        if (! response_check ) return ;
+        var formData = new FormData();
+        var csvFile = document.querySelector('#csvFile');
+        formData.append("csvFile", csvFile.files[0]);
+        const headers = {
+            'Content-Type': 'multipart/form-data',
+        }
+        try{
+            btn_import.innerHTML = "Imporation ..."
+            btn_import.setAttribute("disabled","disabled")
+            loader_svg.style.display = "inline"
+            axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
+            let request_post = await axios.post('/import_memebers_csv', formData, {
+                headers : headers
+            })
+           
+            await sweetAlertPopOut(response.data.status, response.data.message)
+
+        }catch(err){
+            console.log(err)
+            await sweetAlertPopOut(err.response.data.status, err.response.data.message)
+        }
+        btn_import.innerHTML = "Importer"
+        btn_import.removeAttribute("disabled")
+        loader_svg.style.display = "none"
+    }
+
+    async function checkFileUploaded(){
+        var csvFile = document.querySelector('#csvFile');
+        if (csvFile.files[0] == null ){
+            await sweetAlertPopOut("error", "Veuilliez choisir un fichier csv correcte")
+            return false 
+        }
+        return true
+    }
 </script>

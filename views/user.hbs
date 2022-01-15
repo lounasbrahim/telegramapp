@@ -1,109 +1,204 @@
 <div class="main-content" id="panel">
     <input type="hidden" id="_csrf" name="_csrf" value='{{csrfToken}}'>
     <!-- Topnav -->
-    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary
+        border-bottom">
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar links -->
-                <ul class="navbar-nav align-items-center  ml-md-auto ">
+                <ul class="navbar-nav align-items-center ml-md-auto">
 
 
                 </ul>
-                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                <ul class="navbar-nav align-items-center ml-auto ml-md-0">
                     <li class="nav-item dropdown">
-                        <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        <a class="nav-link pr-0" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             <div class="media align-items-center">
                                 <span class="avatar avatar-sm rounded-circle">
-                                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg">
+                                    <img alt="Image placeholder"
+                                        src="../assets/img/theme/team-4.jpg">
                                 </span>
-                                <div class="media-body  ml-2  d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold"></span>Admin</span>
-                                </div>
+                                <div class="media-body ml-2 d-none d-lg-block">
+                                    <span class="mb-0 text-sm font-weight-bold"></span>Admin</span>
                             </div>
-                        </a>
-                        <div class="dropdown-menu  dropdown-menu-right ">
-                            <div class="dropdown-header noti-title">
-                                <h6 class="text-overflow m-0">Welcome!</h6>
-                            </div>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span>Settings</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-support-16"></i>
-                                <span>Support</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="#!" class="dropdown-item">
-                                <i class="ni ni-user-run"></i>
-                                <span>Logout</span>
-                            </a>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- Header -->
-    <!-- Header -->
-    <div class="header bg-primary pb-6">
-        <div class="container-fluid">
-            <div class="header-body">
-                <div class="row align-items-center py-4">
-                    <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Import Members</h6>
-                        <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
-                            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                                <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Memebers</li>
-                            </ol>
-                        </nav>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome!</h6>
+                        </div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-single-02"></i>
+                            <span>My profile</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-settings-gear-65"></i>
+                            <span>Settings</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-calendar-grid-58"></i>
+                            <span>Activity</span>
+                        </a>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-support-16"></i>
+                            <span>Support</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#!" class="dropdown-item">
+                            <i class="ni ni-user-run"></i>
+                            <span>Logout</span>
+                        </a>
                     </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Header -->
+<!-- Header -->
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-white d-inline-block mb-0">Utilisateurs</h6>
+                    <nav aria-label="breadcrumb" class="d-none d-md-inline-block
+                        ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class="breadcrumb-item"><a href="#"><i
+                                        class="fas fa-home"></i></a></li>
+                            <li class="breadcrumb-item active"
+                                aria-current="page">User</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--6">
-        <div class="row mt--5">
-            <div class="col-md-10 ml-auto mr-auto">
-                <div class="card card-upgrade">
-                    <div class="card-header text-center border-bottom-0 pb-0">
-                        <h4 class="card-title">Information Utilisateur</h4>
-                        <p class="card-category">renseinger les informations user</p>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row mt--5">
+        <div class="col-md-10 ml-auto mr-auto">
+            <div class="card card-upgrade">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div>
+                            <h3 class="mb-0 px-3">Ajouter un utilisateur</h3>
+                        </div>
                     </div>
-                    <div class="card-body pt-1">
-                        <form id="userForm" role="form">
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-username">Num de Tel</label>
-                                <input type="text" id="num-tel" class="form-control" placeholder="Num de Tel"
-                                    type="text" value="{{user.tel}}" required>
+                </div>
+                <div class="card-body pt-1">
+                    <form class="userForm" role="form">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label class="form-control-label"
+                                    for="nom-user">Nom</label>
+                                <input type="text" id="nom-user"
+                                    class="form-control" placeholder="Nom"
+                                    type="text" value="{{user.nom}}" required>
                             </div>
+                            <div class="form-group col-6">
+                                <label class="form-control-label"
+                                    for="input-username">Num de Tel</label>
+                                <input type="text" id="num-tel"
+                                    class="form-control"
+                                    placeholder="Num deTel"
+                                    type="text"
+                                    value="{{user.tel}}" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="input-username">API_ID</label>
+                            <input type="text" id="app-id" class="form-control"
+                                placeholder="APP_ID" type="text"
+                                value="{{user.app_id}}" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label"
+                                for="input-username">API_HASH</label>
+                            <input type="text" id="app-hash"
+                                class="form-control" placeholder="APP_HASH"
+                                type="text"
+                                value="{{user.app_hash}}" required>
+                        </div>
+                        <div class="d-flex align-items-center
+                            justify-content-center">
+                            <div class="text-center mx-1">
+                                <button type="button" id="btnAjouter"
+                                    onclick="saveUser()" class="btn btn-primary
+                                    my-4">Ajouter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-header border-0 pt-0">
+                    <div class="row align-items-center">
+                        <div>
+                            <h3 class="mb-0 px-3">Utilisateurs</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <!-- Projects table -->
+                    <table id="members-table" class="table align-items-center
+                        table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Tel</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each users}}
+                            <tr>
+                                <td scope="row" class="user-id">
+                                    {{ id }}
+                                </td>
+                                <td>
+                                    {{ nom }}
+                                </td>
+                                <td class="user-tel">
+                                    {{ tel }}
+                                </td>
+                                <td class="user-actions d-flex
+                                    align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        {{#if connected}}
+                                        <div class="text-center mx-1">
+                                            <button type="button"
+                                                onclick="disconnectUser()"
+                                                class="btnDisconnect btn
+                                                btn-warning my-4">Deconnecter</button>
+                                        </div>
 
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-username">APP_HASH</label>
-                                <input type="text" id="app-hash" class="form-control" placeholder="APP_HASH" type="text"
-                                    value="{{user.app_hash}}" required>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="form-control-label" for="input-username">APP_ID</label>
-                                <input type="text" id="app-id" class="form-control" placeholder="APP_ID" type="text"
-                                    value="{{user.app_id}}" required>
-                            </div>
-                            <div class="text-center">
-                                <button type="button" id="btnSubmit" class="btn btn-primary my-4">Enrigestrer</button>
-                            </div>
-                        </form>
+                                        {{else}}
+                                        <div class="connectDiv"
+                                            style="display:flex;align-items:center">
+                                            <div class="text-center mx-1">
+                                                <button type="button"
+                                                    onclick="signIn()"
+                                                    class="btnConnect btn
+                                                    btn-success my-4">Connecter</button>
+                                            </div>
+                                            <div class="text-center mx-1">
+                                                <button type="button"
+                                                    onclick="deleteUser()"
+                                                    class="btnDelete btn
+                                                    btn-danger my-4">Supprimer</button>
+                                            </div>
+                                        </div>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -112,8 +207,9 @@
         <footer class="footer pt-0">
             <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6">
-                    <div class="copyright text-center  text-lg-left  text-muted">
-                        &copy; 2020 <a href="https://www.taneflit.com" class="font-weight-bold ml-1"
+                    <div class="copyright text-center text-lg-left text-muted">
+                        &copy; 2020 <a href="https://www.taneflit.com"
+                            class="font-weight-bold ml-1"
                             target="_blank">Taneflit</a>
                     </div>
                 </div>
@@ -122,31 +218,281 @@
         </footer>
     </div>
 </div>
+<script src="/js/axios.js"></script>
 <script src="/assets/vendor/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
-    $('#btnSubmit').on('click', function () {
-        var is_valid = true;
-        var numTel = $('#num-tel').val();
-        var appId = $('#app-id').val();
-        var appHash = $('#app-hash').val();
-        var csrf = $('#_csrf').val()
-        //$('#signUpForm input').removeClass('has-error');
-        //$('.help-txt').remove();
-        if (is_valid) {
-            var form = $('#userForm');
-            var url = form.attr('action');
-            $(this).html('Please wait...');
-            $(this).attr('disabled', 'disabled');
-            jQuery.post("user", {
-                _csrf: csrf,
-                numTel,
-                appId,
-                appHash
-            }, (res) => {
-                console.log(res)
-            })
-        } else {
-            return false;
+
+    let default_headers = {
+        'Content-Type' : 'application/json',
+    }
+
+    let phoneCodeHash; 
+    var csrf = document.querySelector('#_csrf').value;
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrf;
+    
+    async function getInputs(){
+        let nom = document.querySelector("#nom-user").value 
+        let numTel = document.querySelector('#num-tel').value;
+        let appId = document.querySelector('#app-id').value;
+        let appHash = document.querySelector('#app-hash').value;
+        return  {
+            nom: nom, 
+            numTel: numTel, 
+            appId : appId,
+            appHash: appHash, 
         }
-    });
+    }
+
+    async function addConnectDiv(div){
+        let html = `<div class="connectDiv"
+            style="display:flex;align-items:center">
+            <div class="text-center mx-1">
+                <button type="button"
+                    onclick="signIn()"
+                    class="btnConnect btn
+                    btn-success my-4">Connecter</button>
+            </div>
+            <div class="text-center mx-1">
+                <button type="button"
+                    onclick="deleteUser()"
+                    class="btnDelete btn
+                    btn-danger my-4">Supprimer</button>
+            </div>
+        </div>`
+        div.innerHTML = html
+    }
+
+    async function addDisconnectDiv(div){
+        let html = `<div class="text-center mx-1">
+                            <button type="button"
+                                onclick="disconnectUser()"
+                                class="btnDisconnect btn
+                                btn-warning my-4">Deconnecter</button>
+                    </div>`
+        div.innerHTML = html
+    }
+
+    async function sendCodeRequest(tel, app_id , app_hash){
+       try {
+            let data = {
+                tel,
+                app_id,
+                app_hash 
+            }
+            let response = await axios.post("send_code", data, {
+                headers : default_headers
+            } )
+            return {status : "success", message: response.data.message, phoneCodeHash: response.data.data}
+
+        }catch(err){
+            return {status : "error", message : err.response.data.message, error: err.response.data.data }
+        } 
+
+        /*  return response.data.response
+        }catch(err) {
+            console.log(err)
+            return err.data.response
+        } */
+    }
+
+    async function disconnectUserRequest(row){
+        try{
+            let response = await axios.get("disconnect_user")
+            return {status : "success", message: response.data.message}
+        }catch(err){
+            return {status : "error", message : err.response.data.message}
+        }      
+    }
+
+    async function disconnectUser(){
+        let row = event.srcElement.closest('tr')
+        row.querySelector(".btnDisconnect").innerHTML = 'Deconnexion...';
+        row.querySelector(".btnDisconnect").setAttribute('disabled', 'disabled');
+        let response_disconnectUser = await disconnectUserRequest(row)
+        if (response_disconnectUser.status == "error") return await sweetAlertPopOut("error", message)
+        row.querySelector(".btnDisconnect").style.display = "none"
+        let user_actions = row.querySelector(".user-actions") 
+        await addConnectDiv(user_actions)
+        await sweetAlertPopOut("success", response_disconnectUser.message)
+    }
+    
+    async function getUserRequest(user_tel){
+        try {
+            let data = {
+                user_tel
+            }
+            let response = await axios.post("get_user", data, {
+                headers : default_headers
+            } )
+            return response.data.user
+        }catch(err) {console.log(err)}
+    } 
+
+    async function getUser(row){
+        let user_id = parseInt(row.querySelector(".user-id").innerText) 
+        let user_tel = row.querySelector(".user-tel").innerText
+        let user = await getUserRequest(user_tel)
+        return user
+    }
+
+    async function signInWithCodeRequest(tel,phone_hash,code){
+        try{
+        let data = {
+            tel, 
+            phone_hash, 
+            code 
+        }
+        let response = await axios.post("singIn_user_with_code",data, {
+                headers: default_headers
+            })
+            return {status : "success", message: response.data.message}
+        }catch(err){
+            console.log(err)
+            return {status : "error", message : err.response.data.message}
+        }     
+    }
+    
+    async function signInWithSessionRequest(user){
+        try{
+            let data = {
+                numTel: user.tel,
+                app_id : user.app_id,
+                app_hash: user.app_hash
+            }
+            let response = await axios.post("singIn_user",data, {
+                headers: default_headers
+            })
+            return {status : "success", message: response.data.message}
+        }catch(err){
+            console.log(err)
+            return {status : "error", message : err.response.data.message}
+        }      
+    }
+
+    async function addSendCodeDiv(div){
+          let html = `<div class="sendcodeDiv text-center d-flex align-items-center">
+                        <input type="text" class="form-control mx-1 sendcode-input" placeholder="Code"></input>
+                        <button type="button"
+                            class="btnSendCode btn
+                            btn-success my-4">Envoyer
+                        </button>
+                     </div>`
+        div.innerHTML = html
+        document.querySelector(".sendcode-input").focus()
+    }
+
+    async function signIn(){
+        let row = event.srcElement.closest('tr')
+        let user_actions = row.querySelector(".user-actions") 
+        let user = await getUser(row)
+        row.querySelector(".btnConnect").innerHTML = 'Veuillez patienter...';
+        row.querySelector(".btnConnect").setAttribute('disabled', 'disabled');
+        if (! user.session_generated){
+            console.log("session is not genrated", user.session_generated)
+            let response_sendCode = await sendCodeRequest(user.tel, user.app_id , user.app_hash)
+            if (response_sendCode.status == "error") {
+                row.querySelector(".btnConnect").innerHTML = 'Connecter';
+                row.querySelector(".btnConnect").removeAttribute('disabled', );
+                return await sweetAlertPopOut("error", response_sendCode.message)
+            }
+            let phone_code_hash = response_sendCode.phoneCodeHash
+            row.querySelector(".connectDiv").style.display = "none"
+            await addSendCodeDiv(user_actions)
+            let btn_sendcode = document.querySelector(".btnSendCode")
+            btn_sendcode.addEventListener("click", async () => {
+                let code = document.querySelector(".sendcode-input").value
+                btn_sendcode.innerHTML = 'Veuillez patienter...';
+                btn_sendcode.setAttribute('disabled', 'disabled');
+                let response = await signInWithCodeRequest(user.tel,phone_code_hash, code)
+                if (response.status == "error") return await sweetAlertPopOut("error", response.message)
+                row.querySelector(".sendcodeDiv").style.display = "none"
+                btn_sendcode.innerHTML = 'Envoyer';
+                btn_sendcode.removeAttribute('disabled');
+                await addDisconnectDiv(user_actions)
+                await sweetAlertPopOut("success", response.message)
+            })
+        }
+        else {
+            let response = await signInWithSessionRequest(user)
+            if (response.status == "error") return await sweetAlertPopOut("error", response.message)
+            row.querySelector(".connectDiv").style.display = "none"
+            await addDisconnectDiv(user_actions)
+            await sweetAlertPopOut("success", response.message)
+        }
+    }
+
+    async function saveUserRequest(inputs){
+         let data = {
+            nom: inputs.nom,
+            numTel: inputs.numTel,
+            appId: inputs.appId,
+            appHash: inputs.appHash
+        }
+        try{
+            let response = await axios.post("save_user",data, {
+                headers: default_headers
+            })
+            return {status : "success", message: response.data.message}
+        }catch(err){
+            console.log(err)
+            return {status : "error", message : err.response.data.message}
+        }  
+    }
+    
+    async function saveUser(){
+        let inputs = await getInputs()
+        if (inputs.nom.length == 0 || inputs.numTel.length == 0 || inputs.appId.length == 0 || inputs.appHash.length == 0 ) return ;
+        document.querySelector("#btnAjouter").innerHTML = 'Veuilliez patienter...';
+        document.querySelector("#btnAjouter").setAttribute('disabled', 'disabled');
+        let response_saveUser = await saveUserRequest(inputs)
+        if (response_saveUser.status == "error") {
+            row.querySelector("#btnAjouter").innerHTML = 'Ajouter';
+            row.querySelector("#btnAjouter").removeAttribute('disabled', );
+            return await sweetAlertPopOut("error", response_saveUser.message)
+            }
+        await sweetAlertPopOut('success', response_saveUser.message)            
+        let response_getUser = await getUserRequest(data.numTel)
+        await addUserToHtmlTable(response_getUser.id, response_getUser.tel, response_getUser.nom) 
+        document.querySelector("#btnAjouter").innerHTML = 'Ajouter';
+        document.querySelector("#btnAjouter").removeAttribute('disabled');
+    }
+
+    async function addUserToHtmlTable(id, tel,nom){
+        let html_table = document.querySelector("#members-table tbody ")
+        let actions_html = `<div class="connectDiv"
+            style="display:flex;align-items:center">
+            <div class="text-center mx-1">
+                <button type="button"
+                    onclick="signIn()"
+                    class="btnConnect btn
+                    btn-success my-4">Connecter</button>
+            </div>
+            <div class="text-center mx-1">
+                <button type="button"
+                    onclick="deleteUser()"
+                    class="btnDelete btn
+                    btn-danger my-4">Supprimer</button>
+            </div>
+        </div>`
+        tr_to_add = `
+            <tr>
+                <td class="user-id">${id}</td>
+                <td>${nom}</td>
+                <td class="user-tel">${tel}</td>
+                <td class="user-actions">${actions_html}</td>
+            </tr>`
+        html_table.innerHTML += tr_to_add
+    }
+
+    async function deleteUser(){
+        let row = event.srcElement.closest('tr')
+        let user_id = parseInt(row.querySelector(".user-id").innerText);
+        let user_tel = row.querySelector(".user-tel").innerText;
+        let response = await axios.delete(`delete_user/${user_id}/${user_tel}`, {
+            header: default_headers,
+        });
+        if (response.data.status != "success") return 
+        row.remove();
+        await sweetAlertPopOut(response.data.status, response.data.message) 
+    }
 </script>
