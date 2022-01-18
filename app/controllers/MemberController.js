@@ -382,8 +382,9 @@ async function createOrUpdateMemebers(
       name: member_name,
       group_id: group_id,
     });
-    return member.save();
+    member.save();
   }
+  return member;
 }
 
 exports.importMemebersFromCsv = async (req, res) => {
@@ -438,21 +439,7 @@ exports.importMemebersFromCsv = async (req, res) => {
       response_createOrUpdateMembers
     );
   }
-
-  // try {
-  //   const file = req.files.file;
-  //   const fileName = file.name;
-  //   const size = file.data.length;
-  //   const extension = path.extname(fileName);
-
-  //   const allowedExtension = /csv/;
-  //   if (!allowedExtension.text(extension)) throw "Unsupported extension !";
-  // } catch (err) {
-  //   console.log(err);
-  //   res.status(500).json({
-  //     message: err,
-  //   });
-  // }
+  return await sendResponse(res, "success", "Membres importés avec succés", "");
 };
 
 exports.importScrapedMembers = async (req, res, next) => {

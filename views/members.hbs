@@ -166,9 +166,8 @@
             let request_post = await axios.post('/import_memebers_csv', formData, {
                 headers : headers
             })
-           
-            await sweetAlertPopOut(response.data.status, response.data.message)
-
+            console.log("request_post :", request_post)
+            await sweetAlertPopOut(request_post.data.status, request_post.data.message)
         }catch(err){
             console.log(err)
             await sweetAlertPopOut(err.response.data.status, err.response.data.message)
