@@ -171,10 +171,14 @@
                                     <div class="d-flex align-items-center">
                                         {{#if connected}}
                                         <div class="text-center mx-1">
-                                            <button type="button"
+                                            {{!-- <button type="button"
                                                 onclick="disconnectUser()"
                                                 class="btnDisconnect btn
-                                                btn-warning my-4">Deconnecter</button>
+                                                btn-warning my-4">Deconnecter
+                                            </button> --}}
+                                            <p class="text-success
+                                                text-md-center
+                                                font-weight-bold">Connecté</p>
                                         </div>
 
                                         {{else}}
@@ -263,12 +267,15 @@
     }
 
     async function addDisconnectDiv(div){
-        let html = `<div class="text-center mx-1">
+        /*let html = `<div class="text-center mx-1">
                             <button type="button"
                                 onclick="disconnectUser()"
                                 class="btnDisconnect btn
                                 btn-warning my-4">Deconnecter</button>
-                    </div>`
+                    </div>`*/
+        let html =  `<p class="text-success
+                        text-md-center
+                        font-weight-bold">Connecté</p>`
         div.innerHTML = html
     }
 

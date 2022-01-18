@@ -243,7 +243,6 @@
         }catch(err){
             console.log("erreur : ", err.response)
             let msg = `${err.response.data.message} à ${user_username}`  
-            console.log("status: ", err.response.data.status)
             await sweetAlertPopOut(err.response.data.status, msg )
             return err.response.data
         }
@@ -257,7 +256,7 @@
         if (response_getGroup.status == "error") return  await sweetAlertPopOut(response_getGroup.data.status, "Erreur lors de l'ajout des memebres" );
         if (users_usernames.length != 0 && group_username.length != 0 ){
           for (let i=0;i < users_usernames.length ;i++){
-            await addMemberRequest(users_usernames, group_username)
+            await addMemberRequest(users_usernames[i], group_username)
             await new Promise((resolve) => setTimeout(resolve, 10000));
           }
         }

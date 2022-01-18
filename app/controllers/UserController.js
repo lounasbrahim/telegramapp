@@ -143,6 +143,7 @@ async function signInRequest(tel, app_id, app_hash) {
   if (response_connect.status === "error") {
     return { status: "error" };
   } else {
+    await disconnectUsersInDb();
     User.update(
       { connected: 1, session_string: session_string },
       { where: { tel: tel } }
@@ -183,15 +184,20 @@ async function sendMe() {
   }
 }
 
-exports.getUser = async (req, res) => {
-  console.log(req.body);
-  let { user_tel } = req.body;
+async function getUser(user_tel) {
   let user = await User.findOne({
     raw: true,
     where: {
       tel: user_tel,
     },
   });
+  return user;
+}
+
+exports.getUser = async (req, res) => {
+  console.log(req.body);
+  let { user_tel } = req.body;
+  let user = await getUser(user_tel);
   if (!user) return res.status(400).send({ message: "user non trouvé" });
   return res.status(200).send({ message: "success", user: user });
 };
@@ -248,6 +254,48 @@ async function saveUserInDB(data) {
     console.log(err);
     return false;
   }
+}
+
+async function signInWithCodeRequest(tel, phone_hash, code) {
+  try {
+    const result = await client.invoke(
+      new Api.auth.SignIn({
+        phoneNumber: tel,
+        phoneCodeHash: phone_hash,
+        phoneCode: code,
+      })
+    );
+    await disconnectUsersInDb();
+    let app_id = await getUser(tel).app_id;
+    let session_string = `session_${app_id}`;
+    User.update(
+      { connected: 1, session_string: session_string },
+      { where: { tel: tel } }
+    );
+    return { status: "success", error: false, response: result };
+  } catch (err) {
+    console.log(err);
+    return { status: "error", error: err, repsonse: false };
+  }
+}
+
+async function updateUser(tel) {
+  let user = await User.findOne({ raw: true, where: { tel: tel } });
+  let session_string = `session_${user.app_id}`;
+  return User.update(
+    { connected: 1, session_string: session_string },
+    { where: { tel: tel, app_id: user.app_id } }
+  );
+}
+
+async function addSessionGenratedToDb(tel) {
+  return User.update({ session_generated: 1 }, { where: { tel: tel } });
+}
+
+async function disconnectUsersInDb() {
+  let users = await User.findAll({ raw: true });
+  let tels = users.map((el) => el.tel);
+  return User.update({ connected: 0 }, { where: { tel: tels } });
 }
 
 exports.userSave = async (req, res) => {
@@ -318,6 +366,7 @@ exports.sendCode = async (req, res) => {
 
 exports.singIn = async (req, res) => {
   let { numTel, app_id, app_hash } = req.body;
+
   let response_signIn = await signInRequest(numTel, app_id, app_hash);
   console.log("response_signIn : ", response_signIn);
   if (response_signIn.status == "error") {
@@ -334,42 +383,7 @@ exports.singInWithCode = async (req, res) => {
   if (response_signIn.status == "error") {
     return await sendResponse(res, "error", "La Connection a echoué", "");
   } else {
-    return await sendResponse(res, "success", "Connecté", "");
-  }
-};
-
-async function signInWithCodeRequest(tel, phone_hash, code) {
-  try {
-    const result = await client.invoke(
-      new Api.auth.SignIn({
-        phoneNumber: tel,
-        phoneCodeHash: phone_hash,
-        phoneCode: code,
-      })
-    );
-    return { status: "success", error: false, response: result };
-  } catch (err) {
-    console.log(err);
-    return { status: "error", error: err, repsonse: false };
-  }
-}
-
-async function updateUser(tel) {
-  let user = await User.findOne({ raw: true, where: { tel: tel } });
-  let session_string = `session_${user.app_id}`;
-  return User.update(
-    { connected: 1, session_string: session_string },
-    { where: { tel: tel, app_id: user.app_id } }
-  );
-}
-
-exports.singInWithCode = async (req, res) => {
-  let { tel, phone_hash, code } = req.body;
-  let response_signIn = await signInWithCodeRequest(tel, phone_hash, code);
-  if (response_signIn.status === "error") {
-    return await sendResponse(res, "error", "La Connection a echoué", "");
-  } else {
-    await updateUser(tel);
+    await addSessionGenratedToDb(tel);
     return await sendResponse(res, "success", "Connecté", "");
   }
 };

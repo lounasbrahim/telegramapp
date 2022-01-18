@@ -144,8 +144,6 @@ async function sendMessage(username, message) {
   //     },
   //   },
   // });
-  console.log("[response_msg] ", response);
-  return response;
 }
 
 async function getChatHistoryLastMessage(chat_id) {
@@ -297,9 +295,6 @@ exports.messagesPage = async (req, res, next) => {
   });
 };
 
-// let members = await Member.findAll({});
-
-//members = members.map((el) => el.dataValues);
 async function sendResponse(res, status, message, data) {
   if (status == "success") {
     res.status(200).send({
@@ -535,6 +530,7 @@ async function getMessageHistory(username, offset_date, date_min) {
     previousDate = offset_date;
     await new Promise((resolve) => setTimeout(resolve, 1000));
   }
+  return results;
 }
 
 async function getMessagesLinks(messages, username) {
@@ -576,10 +572,10 @@ exports.scrapMessages = async (req, res) => {
   let chat_title = chat.title;
   */
 
-  //let nombres_tokens = await getNombrestokens();
+  let nombres_tokens = await getNombrestokens();
 
-  //let crypto_id = await getCryptoId(symbol_crypto);
-  //let cours = await getCurrrentPrice(crypto_id, date_debut);
+  let crypto_id = await getCryptoId(symbol_crypto);
+  let cours = await getCurrrentPrice(crypto_id, date_debut);
 
   // let Difference_In_Time = date_fin.getTime() - date_debut.getTime();
   // let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
@@ -627,14 +623,20 @@ exports.scrapMessages = async (req, res) => {
 
   //messages = messages.response.filter((el) => el.peerId.channelId == chat_id);
 
-  messages = messages.response.filter((el) => el.date >= dateMin_timestamp);
+  console.log("messages.response", messages);
 
-  if (pinned_checkbox == "true") {
-    messages = messages.response.filter((el) => el.pinned == true);
+  messages = messages.filter((el) => el.date >= dateMin_timestamp);
+
+  console.log("pinned_checkbox: ", pinned_checkbox);
+
+  if (pinned_checkbox) {
+    console.log("pinned exectued");
+    messages = messages.filter((el) => el.pinned == true);
   }
 
-  if (frowarded_checkbox == "true") {
-    messages = messages.response.filter((el) => el.fwdFrom != null);
+  if (frowarded_checkbox) {
+    console.log("fwdFrom exectued");
+    messages = messages.filter((el) => el.fwdFrom != null);
   }
 
   let messages_arr = await getMessagesLinks(messages, username);
@@ -665,7 +667,7 @@ exports.scrapMessages = async (req, res) => {
       pinned: el.pinned != null ? el.pinned.toString() : "",
       forwarded: el.fwdFrom == null ? "false" : "true",
       date: date,
-      //cours: cours,
+      cours: cours,
       lien: el.link.link,
     };
   });
@@ -682,7 +684,7 @@ exports.scrapMessages = async (req, res) => {
     messages: final_results,
     date: date_debut,
     link: link,
-    //cours: cours,
-    //nombres_tokens: nombres_tokens,
+    cours: cours,
+    nombres_tokens: nombres_tokens,
   });
 };

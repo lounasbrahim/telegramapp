@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --inspect index.js ",
-    "postinstall": "cp .env-example .env"
+    "start": "nodemon --inspect index.js "
   },
   "author": "Taneflit",
   "license": "MIT",

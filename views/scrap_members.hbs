@@ -262,7 +262,7 @@
     async function scrapMembersRequests(all_members, csrf, username){
         for(let i = 1;i <  20;i++){
             console.log('i: ',i)
-            document.querySelector("#members_table_body").innerHTML =  ""                    
+            //document.querySelector("#members_table_body").innerHTML =  ""                    
             $.post('scrap_members',
             {
                 _csrf: csrf,
@@ -271,41 +271,43 @@
             }, function(data) {
                 console.log(data.members)
                 if (data.members_length == 0){
-                    i = 1001;
+                    i = 1000000;
                 }
                 all_members = [... data.members,  ...all_members]
                 addTotalMembersToHTML(all_members.length)
-                let html_tr = all_members.map(el => {
-                    let html = 
-                    `<tr class="member-tr">
-                        <th scope="row">
-                            ${el.id == null ? "N/A" : el.id}
-                        </th>
-                        <td class="member-username">
-                            ${el.username == null ? "N/A" : el.username}
-                        </td>
-                        <td>
-                            ${el.name == null ? "N/A" : el.name}
-                        </td>
-                        <td>
-                            ${el.phone == null ? "N/A" : el.phone}
-                        </td>
-                    </tr>` 
-                    return html
-                })
-                html_tr = html_tr.join("")
-                console.log("all_members: ",all_members.length)
-                console.log("html_tr", html_tr)
-                //``  
-                document.querySelector("#members_table_body").innerHTML =  html_tr   
             })
             await new Promise((resolve) => setTimeout(resolve, 3000));
         }
+        let html_tr = getHtmRows(all_members) 
+        document.querySelector("#members_table_body").innerHTML =  html_tr   
         return all_members;
     }
 
     function addTotalMembersToHTML(members_length){
         let total_members = document.querySelector("#total-members")
         total_members.innerHTML = members_length
+    }
+
+    function getHtmRows(members){
+        let html_tr_arr = members.map(el => {
+            let html = 
+            `<tr class="member-tr">
+                <th scope="row">
+                    ${el.id == null ? "N/A" : el.id}
+                </th>
+                <td class="member-username">
+                    ${el.username == null ? "N/A" : el.username}
+                </td>
+                <td>
+                    ${el.name == null ? "N/A" : el.name}
+                </td>
+                <td>
+                    ${el.phone == null ? "N/A" : el.phone}
+                </td>
+            </tr>` 
+            return html
+        })
+        html_tr = html_tr_arr.join("")
+        return html_tr
     }
 </script>
